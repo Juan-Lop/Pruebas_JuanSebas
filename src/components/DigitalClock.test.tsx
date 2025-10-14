@@ -5,7 +5,7 @@ describe('DigitalClock', () => {
   test('debe mostrar el título del reloj digital', () => {
     render(<DigitalClock />);
     
-    expect(screen.getByText('Reloj Digitalal')).toBeInTheDocument();
+    expect(screen.getByText('Reloj Digital')).toBeInTheDocument();
   });
 
   test('debe mostrar la hora inicial en formato HH:MM:SS', () => {
