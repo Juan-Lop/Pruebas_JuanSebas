@@ -10,7 +10,7 @@ describe('SearchList', () => {
     
     // Verificar que se muestran algunos nombres específicos
     expect(screen.getByText('Ana García')).toBeInTheDocument();
-    expect(screen.getByText('Carlos Lópezz')).toBeInTheDocument();
+    expect(screen.getByText('Carlos López')).toBeInTheDocument();
     expect(screen.getByText('María Rodríguez')).toBeInTheDocument();
   });
 
