@@ -29,7 +29,7 @@ describe('ColorPicker', () => {
     expect(screen.getByText('Selector de Colores')).toBeInTheDocument();
     const colorInput = screen.getByTestId('color-input');
     const colorDisplay = screen.getByTestId('color-display');
-    expect(colorInput).toHaveValue('#f11b1bff');
+    expect(colorInput).toHaveValue('#ffffff');
     expect(colorDisplay).toHaveStyle('background-color: #ffffff');
   });
 
