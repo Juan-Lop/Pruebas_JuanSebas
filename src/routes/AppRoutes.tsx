@@ -17,6 +17,9 @@ import DigitalClockView from "../views/DigitalClockView";
 import CountdownTimerView from "../views/CountdownTimerView";
 import ColorPickerView from "../views/ColorPickerView";
 import SearchListView from "../views/SearchListView";
+import SolarSystem from "../components/SolarSystem";
+import GeometryShapes from "../components/GeometryShapes";
+import ColombianRegions from "../components/ColombianRegions";
 
 
 export default function AppRoutes() {
@@ -38,6 +41,10 @@ export default function AppRoutes() {
         <Route path="contadorregresivo" element={<CountdownTimerView />} />
         <Route path="selectorcolores" element={<ColorPickerView />} />
         <Route path="buscadorlista" element={<SearchListView />} />
+        <Route path="sistemasolar" element={<SolarSystem />} />
+        <Route path="figurasgeometricas" element={<GeometryShapes />} />
+        <Route path="regionescolombia" element={<ColombianRegions />} />
+        
       </Route>
     </Routes>
   );

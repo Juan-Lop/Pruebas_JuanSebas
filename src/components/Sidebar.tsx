@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaPalette } from "react-icons/fa";
-import { FaHome, FaCube, FaColumns, FaMicrophone, FaShapes, FaCalculator, FaRuler, FaKey, FaMouse, FaList, FaClock, FaStopwatch } from "react-icons/fa";
+import { FaHome, FaCube, FaColumns, FaMicrophone, FaShapes, FaCalculator, FaRuler, FaKey, FaMouse, FaList, FaClock, FaStopwatch, FaMap } from "react-icons/fa";
 
 interface SidebarItem {
   label: string;
@@ -28,6 +28,10 @@ const exerciseItems: SidebarItem[] = [
   { label: "Contador Regresivo", route: "/contadorregresivo", icon: <FaStopwatch /> },
   { label: "Selector de Colores", route: "/selectorcolores", icon: <FaPalette /> },
   { label: "Buscador en Lista", route: "/buscadorlista", icon: <FaList /> },
+  { label: "Sistema Solar", route: "/sistemasolar", icon: <FaCube /> },
+  { label: "Figuras Geométricas", route: "/figurasgeometricas", icon: <FaShapes /> },
+  { label: "Regiones de Colombia", route: "/regionescolombia", icon: <FaMap /> },
+  
   // { label: "Selector de Colores", route: "/selectorcolores", icon: <FaPalette /> },
   // { label: "Buscador en Lista", route: "/buscadorlista", icon: <FaSearch /> },
 ];
