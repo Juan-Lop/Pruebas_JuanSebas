@@ -56,7 +56,7 @@ describe("SolarSystem", () => {
   test("reproduce audio cuando se hace clic en el botón", () => {
     render(<SolarSystem />);
 
-    const venusButton = screen.getByLabelText("Planeta Venuss");
+    const venusButton = screen.getByLabelText("Planeta Venus");
     fireEvent.click(venusButton);
 
     const audioButton = screen.getByRole("button", {
