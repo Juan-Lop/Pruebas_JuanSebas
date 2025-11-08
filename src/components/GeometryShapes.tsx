@@ -134,14 +134,57 @@ export default function GeometryShapes() {
     selectedShape === "rectangle" || selectedShape === "triangle";
 
   return (
-    <div className="min-h-screen w-full p-4 md:p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative overflow-hidden">
-      {/* Formas geométricas decorativas de fondo */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-purple-400 rotate-45 animate-float-delayed"></div>
-        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-green-400 rounded-full animate-float"></div>
-        <div className="absolute bottom-40 right-1/3 w-28 h-28 bg-orange-400 rotate-12 animate-float-delayed"></div>
+    <div className="min-h-screen w-full p-4 md:p-8 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 relative overflow-hidden">
+      {/* Formas geométricas decorativas de fondo - COLORES INTENSOS */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Cuadrados */}
+        <div className="absolute top-10 left-10 w-40 h-40 bg-blue-600 opacity-45 rounded-xl animate-float shadow-2xl"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-sky-600 opacity-50 rounded-lg animate-float-delayed shadow-xl transform rotate-12"></div>
+        
+        {/* Círculos */}
+        <div className="absolute top-1/4 right-10 w-48 h-48 bg-purple-600 opacity-45 rounded-full animate-float shadow-2xl"></div>
+        <div className="absolute bottom-1/3 left-16 w-36 h-36 bg-violet-600 opacity-50 rounded-full animate-float-delayed shadow-xl"></div>
+        
+        {/* Triángulos */}
+        <div className="absolute top-1/2 left-1/4 w-0 h-0 opacity-45 animate-float"
+          style={{
+            borderLeft: '60px solid transparent',
+            borderRight: '60px solid transparent',
+            borderBottom: '100px solid rgb(234 88 12)',
+          }}></div>
+        <div className="absolute bottom-10 right-1/3 w-0 h-0 opacity-50 animate-float-delayed"
+          style={{
+            borderLeft: '45px solid transparent',
+            borderRight: '45px solid transparent',
+            borderBottom: '75px solid rgb(194 65 12)',
+          }}></div>
+        
+        {/* Rectángulos */}
+        <div className="absolute top-40 left-1/3 w-44 h-28 bg-green-600 opacity-45 rounded-2xl animate-float shadow-2xl transform -rotate-12"></div>
+        <div className="absolute bottom-32 left-1/2 w-36 h-24 bg-emerald-600 opacity-50 rounded-xl animate-float-delayed shadow-xl transform rotate-6"></div>
+        
+        {/* Figuras adicionales más pequeñas */}
+        <div className="absolute top-20 right-1/3 w-20 h-20 bg-pink-600 opacity-55 rounded-full animate-float"></div>
+        <div className="absolute bottom-1/4 right-16 w-24 h-24 bg-yellow-500 opacity-55 rounded-lg animate-float-delayed transform rotate-45"></div>
+        <div className="absolute top-1/3 left-10 w-28 h-28 bg-red-600 opacity-50 rounded-full animate-float shadow-lg"></div>
+        <div className="absolute top-2/3 right-1/4 w-32 h-32 bg-cyan-600 opacity-45 rounded-xl animate-float shadow-lg transform rotate-6"></div>
+        <div className="absolute bottom-1/2 left-1/3 w-26 h-26 bg-lime-600 opacity-50 rounded-full animate-float-delayed"></div>
+        
+        {/* Patrón de reglas y líneas decorativas */}
+        <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-indigo-500 to-transparent opacity-25"></div>
+        <div className="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-25"></div>
       </div>
+
+      {/* Patrón de cuadrícula de fondo - como papel cuadriculado */}
+      <div className="absolute inset-0 opacity-12"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #4f46e5 1px, transparent 1px),
+            linear-gradient(to bottom, #4f46e5 1px, transparent 1px)
+          `,
+          backgroundSize: "30px 30px"
+        }}
+      />
 
       {/* Confetti cuando se calcula */}
       {showConfetti && (
@@ -165,13 +208,41 @@ export default function GeometryShapes() {
       {/* Contenido principal */}
       <div className="relative z-10">
         {/* Título */}
-        <div className="text-center mb-8 md:mb-12">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mb-4 animate-gradient">
+        <div className="text-center mb-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mb-4 animate-gradient drop-shadow-lg">
             📐 Calculadora Geométrica
           </h1>
-          <p className="text-gray-700 text-lg md:text-xl font-medium">
+          <p className="text-gray-800 text-lg md:text-xl font-bold drop-shadow-md">
             ¡Explora el mundo de las figuras y sus medidas! ✨
           </p>
+        </div>
+
+        {/* Panel de instrucciones - Debajo del título */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 rounded-3xl p-5 shadow-2xl border-4 border-white">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-3xl animate-bounce">📚</span>
+              <h3 className="font-extrabold text-2xl text-white drop-shadow-lg">¡Instrucciones!</h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="flex flex-col items-center gap-2 bg-white/95 rounded-2xl p-4 transform hover:scale-105 transition-all shadow-lg">
+                <span className="text-4xl">1️⃣</span>
+                <p className="text-center text-sm font-bold text-gray-800">Escoge la <span className="text-blue-600">figura</span></p>
+              </div>
+              <div className="flex flex-col items-center gap-2 bg-white/95 rounded-2xl p-4 transform hover:scale-105 transition-all shadow-lg">
+                <span className="text-4xl">2️⃣</span>
+                <p className="text-center text-sm font-bold text-gray-800">Escribe las <span className="text-purple-600">medidas</span></p>
+              </div>
+              <div className="flex flex-col items-center gap-2 bg-white/95 rounded-2xl p-4 transform hover:scale-105 transition-all shadow-lg">
+                <span className="text-4xl">3️⃣</span>
+                <p className="text-center text-sm font-bold text-gray-800">Dale clic en <span className="text-green-600">Calcular</span></p>
+              </div>
+              <div className="flex flex-col items-center gap-2 bg-white/95 rounded-2xl p-4 transform hover:scale-105 transition-all shadow-lg">
+                <span className="text-4xl">4️⃣</span>
+                <p className="text-center text-sm font-bold text-gray-800">¡Mira los <span className="text-orange-600">resultados</span>!</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Grid de figuras */}
@@ -464,16 +535,16 @@ export default function GeometryShapes() {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-15px);
+            transform: translateY(-20px);
           }
         }
 
         @keyframes float-delayed {
           0%, 100% {
-            transform: translateY(0px) rotate(45deg);
+            transform: translateY(0px) rotate(12deg);
           }
           50% {
-            transform: translateY(-20px) rotate(45deg);
+            transform: translateY(-25px) rotate(12deg);
           }
         }
 
@@ -502,11 +573,11 @@ export default function GeometryShapes() {
         }
 
         .animate-float {
-          animation: float 3s ease-in-out infinite;
+          animation: float 4s ease-in-out infinite;
         }
 
         .animate-float-delayed {
-          animation: float-delayed 4s ease-in-out infinite;
+          animation: float-delayed 5s ease-in-out infinite;
         }
 
         .animate-confetti {

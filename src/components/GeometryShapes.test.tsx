@@ -1,9 +1,8 @@
-// src/components/GeometryShapes.test.tsx
 import { render, screen, fireEvent } from "@testing-library/react";
 import GeometryShapes from "./GeometryShapes";
 
-describe("GeometryShapes", () => {
-  test("muestra todas las figuras geométricas disponibles", () => {
+describe("GeometryShapes Component", () => {
+  test("muestra todas las figuras geométricas", () => {
     render(<GeometryShapes />);
 
     expect(screen.getByText("Cuadrado")).toBeInTheDocument();
@@ -12,100 +11,89 @@ describe("GeometryShapes", () => {
     expect(screen.getByText("Triángulo")).toBeInTheDocument();
   });
 
-  test("calcula el área y perímetro de un cuadrado correctamente", () => {
+  test("calcula correctamente el área y perímetro de un cuadrado", () => {
     render(<GeometryShapes />);
 
-    const squareButton = screen.getByText("Cuadrado");
-    fireEvent.click(squareButton);
+    fireEvent.click(screen.getByText("Cuadrado"));
 
-    const input = screen.getByPlaceholderText(/Ej:/);
+    const input = screen.getByPlaceholderText("Ej: 5 o 5.5");
     fireEvent.change(input, { target: { value: "5" } });
 
-    const calculateButton = screen.getByRole("button", { name: /Calcular/i });
-    fireEvent.click(calculateButton);
+    fireEvent.click(screen.getByRole("button", { name: /Calcular/i }));
 
-    expect(screen.getByText("25")).toBeInTheDocument();
-    expect(screen.getByText("20")).toBeInTheDocument();
+    expect(screen.getByText("25")).toBeInTheDocument(); // área
+    expect(screen.getByText("20")).toBeInTheDocument(); // perímetro
   });
 
-  test("calcula con números decimales correctamente", () => {
+  test("acepta números decimales correctamente", () => {
     render(<GeometryShapes />);
 
-    const squareButton = screen.getByText("Cuadrado");
-    fireEvent.click(squareButton);
+    fireEvent.click(screen.getByText("Cuadrado"));
 
-    const input = screen.getByPlaceholderText(/Ej:/);
+    const input = screen.getByPlaceholderText("Ej: 5 o 5.5");
     fireEvent.change(input, { target: { value: "5.5" } });
 
-    const calculateButton = screen.getByRole("button", { name: /Calcular/i });
-    fireEvent.click(calculateButton);
+    fireEvent.click(screen.getByRole("button", { name: /Calcular/i }));
 
-    expect(screen.getByText("30.25")).toBeInTheDocument();
-    expect(screen.getByText("22")).toBeInTheDocument();
+    expect(screen.getByText("30.25")).toBeInTheDocument(); // área
+    expect(screen.getByText("22")).toBeInTheDocument(); // perímetro
   });
 
-  test("calcula el área y perímetro de un rectángulo correctamente", () => {
+  test("calcula correctamente el área y perímetro de un rectángulo", () => {
     render(<GeometryShapes />);
 
-    const rectangleButton = screen.getByText("Rectángulo");
-    fireEvent.click(rectangleButton);
+    fireEvent.click(screen.getByText("Rectángulo"));
 
     const inputs = screen.getAllByPlaceholderText(/Ej:/);
     fireEvent.change(inputs[0], { target: { value: "6" } });
     fireEvent.change(inputs[1], { target: { value: "4" } });
 
-    const calculateButton = screen.getByRole("button", { name: /Calcular/i });
-    fireEvent.click(calculateButton);
+    fireEvent.click(screen.getByRole("button", { name: /Calcular/i }));
 
-    expect(screen.getByText("24")).toBeInTheDocument();
-    expect(screen.getByText("20")).toBeInTheDocument();
+    expect(screen.getByText("24")).toBeInTheDocument(); // área
+    expect(screen.getByText("20")).toBeInTheDocument(); // perímetro
   });
 
-  test("calcula el área y perímetro de un círculo correctamente", () => {
+  test("calcula correctamente el área y perímetro de un círculo", () => {
     render(<GeometryShapes />);
 
-    const circleButton = screen.getByText("Círculo");
-    fireEvent.click(circleButton);
+    fireEvent.click(screen.getByText("Círculo"));
 
-    const input = screen.getByPlaceholderText(/Ej:/);
+    const input = screen.getByPlaceholderText("Ej: 5 o 5.5");
     fireEvent.change(input, { target: { value: "3" } });
 
-    const calculateButton = screen.getByRole("button", { name: /Calcular/i });
-    fireEvent.click(calculateButton);
+    fireEvent.click(screen.getByRole("button", { name: /Calcular/i }));
 
-    expect(screen.getByText("28.27")).toBeInTheDocument();
-    expect(screen.getByText("18.85")).toBeInTheDocument();
+    expect(screen.getByText("28.27")).toBeInTheDocument(); // área
+    expect(screen.getByText("18.85")).toBeInTheDocument(); // perímetro
   });
 
-  test("limpia los cálculos al presionar el botón limpiar", () => {
+  test("limpia los resultados al presionar el botón 🔄", () => {
     render(<GeometryShapes />);
 
-    const squareButton = screen.getByText("Cuadrado");
-    fireEvent.click(squareButton);
+    fireEvent.click(screen.getByText("Cuadrado"));
 
-    const input = screen.getByPlaceholderText(/Ej:/);
+    const input = screen.getByPlaceholderText("Ej: 5 o 5.5");
     fireEvent.change(input, { target: { value: "5" } });
 
-    const calculateButton = screen.getByRole("button", { name: /Calcular/i });
-    fireEvent.click(calculateButton);
+    fireEvent.click(screen.getByRole("button", { name: /Calcular/i }));
 
     expect(screen.getByText("25")).toBeInTheDocument();
 
     const clearButton = screen.getByRole("button", { name: "🔄" });
     fireEvent.click(clearButton);
 
-    expect(screen.queryByText(/Resultados/i)).toBeNull();
+    expect(screen.queryByText("¡Resultados!")).toBeNull();
   });
 
-  test("no calcula sin ingresar dimensiones", () => {
+  test("no muestra resultados si no se ingresan dimensiones", () => {
     render(<GeometryShapes />);
 
-    const triangleButton = screen.getByText("Triángulo");
-    fireEvent.click(triangleButton);
+    fireEvent.click(screen.getByText("Triángulo"));
 
     const calculateButton = screen.getByRole("button", { name: /Calcular/i });
     fireEvent.click(calculateButton);
 
-    expect(screen.queryByText(/Resultados/i)).toBeNull();
+    expect(screen.queryByText("¡Resultados!")).toBeNull();
   });
 });
