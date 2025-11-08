@@ -1,84 +1,96 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaPalette } from "react-icons/fa";
-import { FaHome, FaCube, FaColumns, FaMicrophone, FaShapes, FaCalculator, FaRuler, FaKey, FaMouse, FaList, FaClock, FaStopwatch, FaMap } from "react-icons/fa";
+import { FaShapes, FaMap, FaRocket } from "react-icons/fa";
 
 interface SidebarItem {
   label: string;
   route: string;
   icon?: React.ReactNode;
+  color: string;
 }
 
-const mainItems: SidebarItem[] = [
-  { label: "Inicio", route: "/", icon: <FaHome /> },
-  { label: "Three.js Demo", route: "/three", icon: <FaCube /> },
-  { label: "Responsive Layouts", route: "/layouts", icon: <FaColumns /> },
-  { label: "Text-to-Speech", route: "/tts", icon: <FaMicrophone /> },
-  { label: "Figuras Geometricas", route: "/three_2", icon: <FaShapes /> },
-];
-
 const exerciseItems: SidebarItem[] = [
-  { label: "Tablas de Multiplicar", route: "/tablasmul", icon: <FaCalculator /> },
-  { label: "Conversor de Unidades", route: "/conversorunid", icon: <FaRuler /> },
-  { label: "Validadador de Contraseñas", route: "/validcontrasena", icon: <FaKey /> },
-  { label: "Contador de Clics con Almacenamiento", route: "/contadorclics", icon: <FaMouse /> },
-  { label: "Lista de Tareas", route: "/listareas", icon: <FaList /> },
-  // NUEVOS ELEMENTOS
-  { label: "Reloj Digital", route: "/relojdigital", icon: <FaClock /> },
-  { label: "Contador Regresivo", route: "/contadorregresivo", icon: <FaStopwatch /> },
-  { label: "Selector de Colores", route: "/selectorcolores", icon: <FaPalette /> },
-  { label: "Buscador en Lista", route: "/buscadorlista", icon: <FaList /> },
-  { label: "Sistema Solar", route: "/sistemasolar", icon: <FaCube /> },
-  { label: "Figuras Geométricas", route: "/figurasgeometricas", icon: <FaShapes /> },
-  { label: "Regiones de Colombia", route: "/regionescolombia", icon: <FaMap /> },
-  
-  // { label: "Selector de Colores", route: "/selectorcolores", icon: <FaPalette /> },
-  // { label: "Buscador en Lista", route: "/buscadorlista", icon: <FaSearch /> },
+  { 
+    label: "Sistema Solar", 
+    route: "/sistemasolar", 
+    icon: <FaRocket className="text-xl" />,
+    color: "from-purple-400 to-pink-500"
+  },
+  { 
+    label: "Figuras Geométricas", 
+    route: "/figurasgeometricas", 
+    icon: <FaShapes className="text-xl" />,
+    color: "from-blue-400 to-cyan-500"
+  },
+  { 
+    label: "Regiones de Colombia", 
+    route: "/regionescolombia", 
+    icon: <FaMap className="text-xl" />,
+    color: "from-green-400 to-emerald-500"
+  },
 ];
 
 export default function Sidebar() {
-  const [openMain, setOpenMain] = useState(false);
-  const [openExercises, setOpenExercises] = useState(false);
+  const [openExercises, setOpenExercises] = useState(true);
 
-  const renderNavItem = ({ label, route, icon }: SidebarItem) => (
+  const renderNavItem = ({ label, route, icon, color }: SidebarItem) => (
     <NavLink
       key={route}
       to={route}
       className={({ isActive }) =>
-        `w-full text-left flex items-center gap-2 justify-between rounded-lg px-3 py-2 text-slate-700 dark:text-slate-300 
-         hover:bg-slate-50 dark:hover:bg-slate-800 
-         ${isActive ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300" : ""}`
+        `group w-full text-left flex items-center gap-3 rounded-xl px-4 py-3 
+         transition-all duration-300 transform hover:scale-105 hover:shadow-lg
+         ${isActive 
+           ? `bg-gradient-to-r ${color} text-white shadow-md` 
+           : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-gradient-to-r hover:" + color + " hover:text-white"
+         }`
       }
     >
-      <div className="flex items-center gap-2">{icon} {label}</div>
+      <div className="flex items-center gap-3 font-semibold text-base">
+        <span className={`transform transition-transform group-hover:rotate-12 group-hover:scale-110`}>
+          {icon}
+        </span>
+        {label}
+      </div>
     </NavLink>
   );
 
   return (
-    <aside className="hidden md:block w-full md:w-[240px] border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-      <div className="p-3 space-y-1">
+    <aside className="hidden md:block w-full md:w-[260px] border-r border-slate-200 dark:border-slate-800 
+                      bg-gradient-to-b from-orange-50 to-yellow-50 dark:from-slate-900 dark:to-slate-800">
+      <div className="p-4 space-y-3">
+        
+        {/* Título del menú */}
+        <div className="text-center mb-4">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 
+                         bg-clip-text text-transparent mb-1">
+            🌟 Aprende Jugando 🌟
+          </h2>
+          <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+            ¡Diviértete explorando!
+          </p>
+        </div>
 
-        {/* Acordeón Main Items */}
-        <button
-          onClick={() => setOpenMain(!openMain)}
-          className="w-full text-left flex items-center justify-between rounded-lg px-3 py-2 text-slate-700 dark:text-slate-300 
-                     hover:bg-slate-50 dark:hover:bg-slate-800 font-medium"
-        >
-          Menú Principal
-          <span>{openMain ? "▲" : "▼"}</span>
-        </button>
-        {openMain && <div className="pl-4 space-y-1">{mainItems.map(renderNavItem)}</div>}
-
-        {/* Acordeón Exercises */}
+        {/* Acordeón de Actividades */}
         <button
           onClick={() => setOpenExercises(!openExercises)}
-          className="w-full text-left flex items-center justify-between rounded-lg px-3 py-2 text-slate-700 dark:text-slate-300 
-                     hover:bg-slate-50 dark:hover:bg-slate-800 font-medium"
+          className="w-full flex items-center justify-between rounded-xl px-4 py-3 
+                     bg-gradient-to-r from-orange-400 to-pink-500 text-white font-bold text-lg
+                     shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
         >
-          Ejercicios - Jtest
-          <span>{openExercises ? "▲" : "▼"}</span>
+          <span className="flex items-center gap-2">
+            🎮 Mis Aventuras
+          </span>
+          <span className="text-2xl transform transition-transform duration-300" 
+                style={{ transform: openExercises ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+            🔽
+          </span>
         </button>
-        {openExercises && <div className="pl-4 space-y-1">{exerciseItems.map(renderNavItem)}</div>}
+        {openExercises && (
+          <div className="space-y-2 mt-3">
+            {exerciseItems.map(renderNavItem)}
+          </div>
+        )}
 
       </div>
     </aside>
