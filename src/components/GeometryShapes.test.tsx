@@ -5,7 +5,7 @@ describe("GeometryShapes Component", () => {
   test("muestra todas las figuras geométricas", () => {
     render(<GeometryShapes />);
 
-    expect(screen.getByText("Cuadrados")).toBeInTheDocument();
+    expect(screen.getByText("Cuadrado")).toBeInTheDocument();
     expect(screen.getByText("Rectángulo")).toBeInTheDocument();
     expect(screen.getByText("Círculo")).toBeInTheDocument();
     expect(screen.getByText("Triángulo")).toBeInTheDocument();
