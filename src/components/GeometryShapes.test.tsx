@@ -89,7 +89,7 @@ describe("GeometryShapes Component", () => {
   test("no muestra resultados si no se ingresan dimensiones", () => {
     render(<GeometryShapes />);
 
-    fireEvent.click(screen.getByText("Triángulo"));
+    fireEvent.click(screen.getByText("Triángulos"));
 
     const calculateButton = screen.getByRole("button", { name: /Calcular/i });
     fireEvent.click(calculateButton);
