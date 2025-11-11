@@ -100,7 +100,7 @@ describe("ColombianRegions", () => {
 
     expect(screen.getByText(/mar Caribe/i)).toBeInTheDocument();
 
-    const pacificaButton = screen.getByText("Región acífica");
+    const pacificaButton = screen.getByText("Región Pacífica");
     fireEvent.click(pacificaButton);
 
     expect(screen.getByText(/océano Pacífico/i)).toBeInTheDocument();
