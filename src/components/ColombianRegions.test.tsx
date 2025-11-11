@@ -16,7 +16,7 @@ describe("ColombianRegions", () => {
   test("muestra todas las regiones de Colombia", () => {
     render(<ColombianRegions />);
 
-    expect(screen.getByText("Región Caribee")).toBeInTheDocument();
+    expect(screen.getByText("Región Caribe")).toBeInTheDocument();
     expect(screen.getByText("Región Pacífica")).toBeInTheDocument();
     expect(screen.getByText("Región Andina")).toBeInTheDocument();
     expect(screen.getByText("Región Orinoquía")).toBeInTheDocument();
