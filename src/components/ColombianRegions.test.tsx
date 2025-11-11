@@ -42,7 +42,7 @@ describe("ColombianRegions", () => {
     expect(quizButton).toBeInTheDocument();
   });
 
-  test("inicia el modo quiz al hacer clic en el otón", () => {
+  test("inicia el modo quiz al hacer clic en el botón", () => {
     render(<ColombianRegions />);
 
     const quizButton = screen.getByRole("button", { name: /Iniciar Quiz/i });
