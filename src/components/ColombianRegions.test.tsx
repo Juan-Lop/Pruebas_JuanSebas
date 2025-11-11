@@ -109,7 +109,7 @@ describe("ColombianRegions", () => {
   test("muestra la capital de cada región", () => {
     render(<ColombianRegions />);
 
-    const andinaButton = screen.getByText("Región Andina");
+    const andinaButton = screen.getByText("egión Andina");
     fireEvent.click(andinaButton);
 
     expect(screen.getByText(/Bogotá/i)).toBeInTheDocument();
