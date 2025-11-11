@@ -77,7 +77,7 @@ describe("ColombianRegions", () => {
     expect(answerButtons.length).toBe(3);
   });
 
-  test("sale del modo quiz al presionar salir", () => {
+  test("sale del mdo quiz al presionar salir", () => {
     render(<ColombianRegions />);
 
     const quizButton = screen.getByRole("button", { name: /Iniciar Quiz/i });
