@@ -77,7 +77,7 @@ describe("ColombianRegions", () => {
     expect(answerButtons.length).toBe(3);
   });
 
-  test("sale del odo quiz al presionar salir", () => {
+  test("sale del modo quiz al presionar salir", () => {
     render(<ColombianRegions />);
 
     const quizButton = screen.getByRole("button", { name: /Iniciar Quiz/i });
@@ -100,7 +100,7 @@ describe("ColombianRegions", () => {
 
     expect(screen.getByText(/mar Caribe/i)).toBeInTheDocument();
 
-    const pacificaButton = screen.getByText("Región Pacífica");
+    const pacificaButton = screen.getByText("Región acífica");
     fireEvent.click(pacificaButton);
 
     expect(screen.getByText(/océano Pacífico/i)).toBeInTheDocument();
