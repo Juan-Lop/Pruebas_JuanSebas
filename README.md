@@ -10,11 +10,10 @@ El aplicativo incluye:
 * **Componentes de ejemplo** para verificar dependencias.
 * **Ejercicios con pruebas unitarias**:
 
-  * Tablas de Multiplicar (`TablasMul.tsx`)
-  * Conversor de Unidades (`UnitConverter.tsx`)
-  * Validador de Contraseñas (`PasswordValidator.tsx`)
-  * Contador de Clics (`ClickCounter.tsx`)
-  * Lista de Tareas (`TodoList.tsx`)
+  * ColombianRegions (`ColombianRegions.tsx`)
+  * GeometryShapes (`GeometryShapes.tsx`)
+  * SolarSystem (`SolarSystem.tsx`)
+
 
 ---
 
